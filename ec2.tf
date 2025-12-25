@@ -38,10 +38,15 @@ resource "aws_security_group" "web_sg" {
   }
 }
 
+resource "aws_key_pair" "deployer_key" {
+  key_name   = var.ssh_key_name
+  public_key = file(var.public_key_path)
+}
+
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.amazon_linux_2.id
   instance_type          = var.ec2_instance_type
-  key_name               = var.ssh_key_name
+  key_name               = aws_key_pair.deployer_key.key_name
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
 

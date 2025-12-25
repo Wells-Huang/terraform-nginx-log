@@ -24,9 +24,15 @@ variable "ec2_instance_type" {
   default     = "t3.micro"
 }
 
+variable "public_key_path" {
+  description = "The path to the public key file to be used for the EC2 instance."
+  type        = string
+  default     = "./nginx_log.pub"
+}
+
 variable "ssh_key_name" {
   description = "The name of the EC2 key pair for SSH access. (Optional)"
   type        = string
-  default     = null # 建議建立並填寫，以便登入主機排查問題
+  default     = "nginx_log_key" # 建議建立並填寫，以便登入主機排查問題
 }
 

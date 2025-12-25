@@ -23,3 +23,8 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Local project specific
+error.txt
+*.pem
+*.pub
+

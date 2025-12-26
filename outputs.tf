@@ -22,5 +22,5 @@ output "ec2_public_ip" {
 
 output "ssh_command" {
   description = "The command to SSH into the EC2 instance."
-  value       = "ssh -i ${replace(var.public_key_path, ".pem", "")} ec2-user@${aws_instance.web_server.public_ip}"
+  value       = "ssh -i ${replace(var.public_key_path, ".pub", ".pem")} ec2-user@${aws_instance.web_server.public_ip}"
 }

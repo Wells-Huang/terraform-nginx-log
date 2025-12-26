@@ -105,7 +105,7 @@ find "$LOG_DIR" -name "*.gz" -type f -mmin +5 | while read -r file; do
         
         S3_PATH="s3://$BUCKET_NAME/year=$YEAR/month=$MONTH/day=$DAY/hour=$HOUR_STR/"
         
-        aws s3 mv "$file" "$${S3_PATH}${HOSTNAME}-$(basename "$file")" --quiet
+        aws s3 mv "$file" "$${S3_PATH}$${HOSTNAME}-$(basename "$file")" --quiet
     fi
 done
 EOL

@@ -34,7 +34,7 @@
 
 **S3 路徑：**
 ```
-s3://my-nginx-log-bucket/nginx/YYYY/MM/DD/HH/hostname/*.gz
+s3://my-nginx-log-bucket/nginx/year=YYYY/month=MM/day=DD/hour=HH/hostname/*.gz
 ```
 
 **Athena 查詢：**

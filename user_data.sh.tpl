@@ -94,7 +94,7 @@ LOG_DIR="/var/log/nginx"
 BUCKET_NAME="${s3_bucket_id}/nginx"
 HOSTNAME=$(hostname -s)
 
-find "$LOG_DIR" -name "*.gz" -type f -mmin +5 | while read -r file; do
+find "$LOG_DIR" -name "*.gz" -type f -mmin +1 | while read -r file; do
     if [[ "$file" =~ -([0-9]{8})-([0-9]{2})\.gz$ ]]; then
         DATE_STR="$${BASH_REMATCH[1]}"
         HOUR_STR="$${BASH_REMATCH[2]}"

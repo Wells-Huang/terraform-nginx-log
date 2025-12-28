@@ -17,13 +17,16 @@ resource "aws_glue_catalog_table" "nginx_logs_table" {
     "input.regex"                        = "^([^ ]+) - ([^ ]+) \\[(.*?)\\] \"(.*?)\" (\\d{3}) (\\d+|-) \"([^\"]*)\" \"([^\"]*)\"$"
     "projection.enabled"                 = "true"
     "projection.year.type"               = "integer"
-    "projection.year.range"              = "2024,2099"
+    "projection.year.range"              = "2025,2099"
     "projection.month.type"              = "integer"
     "projection.month.range"             = "01,12"
+    "projection.month.digits"            = "2"
     "projection.day.type"                = "integer"
     "projection.day.range"               = "01,31"
+    "projection.day.digits"              = "2"
     "projection.hour.type"               = "integer"
     "projection.hour.range"              = "00,23"
+    "projection.hour.digits"             = "2"
     "storage.location.template"          = "s3://${aws_s3_bucket.log_bucket.id}/nginx/year=$${year}/month=$${month}/day=$${day}/hour=$${hour}/"
   }
 
@@ -58,10 +61,7 @@ resource "aws_glue_catalog_table" "nginx_logs_table" {
       name = "client_ip"
       type = "string"
     }
-    columns {
-      name = "identity"
-      type = "string"
-    }
+
     columns {
       name = "user"
       type = "string"
